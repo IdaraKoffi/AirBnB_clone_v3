@@ -13,9 +13,8 @@ from models.state import State
 from models.user import User
 from os import getenv
 import sqlalchemy
-from sqlalchemy import create_engine MetaData
+from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-from sqlalchemy.orm import sessionmaker, scoped_session
 
 classes = {"Amenity": Amenity, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
@@ -26,7 +25,7 @@ class DBStorage:
     __engine = None
     __session = None
 
-        def __init__(self):
+    def __init__(self):
         """Instantiate a DBStorage object"""
         HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
         HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD')
@@ -76,7 +75,7 @@ class DBStorage:
         """call remove() method on the private session attribute"""
         self.__session.remove()
 
-         def get(self, cls, id):
+    def get(self, cls, id):
         """
         Returns the object based on the class name and its ID, or None if not
         found
