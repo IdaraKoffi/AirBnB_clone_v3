@@ -85,6 +85,14 @@ class DBStorage:
             for key, value in d_obj.items():
                 if key.split(".")[1] == id:
                     return value
+        """
+        Returns the object based on the class name and its ID, or None if not
+        found
+        """
+        objects = self.__session.query(classes[cls])
+        for obj in objects:
+            if obj.id == id:
+                return obj
         return None
 
     def count(self, cls=None):
