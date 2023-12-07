@@ -19,6 +19,11 @@ def r_user_id(user_id):
     """
     file: yml/users_get.yml
     """
+    all_users = storage.all(User).values()
+    list_users = []
+    for user in all_users:
+        list_users.append(user.to_dict())
+    return jsonify(list_users)
     user = storage.get("User", user_id)
     if not user:
         abort(404)
